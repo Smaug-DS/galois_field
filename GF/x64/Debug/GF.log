@@ -1,0 +1,29 @@
+﻿  actionExtended.cpp
+D:\___CODING___\Projects\Project5\Project7\GF\actionExtended.h(439,21): warning C4101: 'e': unreferenced local variable
+  actionSimple.cpp
+D:\___CODING___\Projects\Project5\Project7\GF\actionSimple.h(271,22): warning C4101: 'ex': unreferenced local variable
+D:\___CODING___\Projects\Project5\Project7\GF\actionSimple.h(275,21): warning C4101: 'ex': unreferenced local variable
+D:\___CODING___\Projects\Project5\Project7\GF\actionSimple.h(279,21): warning C4101: 'e': unreferenced local variable
+  extended.cpp
+D:\___CODING___\Projects\Project5\Project7\GF\actionSimple.h(271,22): warning C4101: 'ex': unreferenced local variable
+D:\___CODING___\Projects\Project5\Project7\GF\actionSimple.h(275,21): warning C4101: 'ex': unreferenced local variable
+D:\___CODING___\Projects\Project5\Project7\GF\actionSimple.h(279,21): warning C4101: 'e': unreferenced local variable
+  extendedBuilding.cpp
+  MyForm.cpp
+D:\___CODING___\Projects\Project5\Project7\GF\simple.h(349,22): warning C4101: 'ex': unreferenced local variable
+D:\___CODING___\Projects\Project5\Project7\GF\simple.h(353,21): warning C4101: 'e': unreferenced local variable
+D:\___CODING___\Projects\Project5\Project7\GF\extended.h(310,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+D:\___CODING___\Projects\Project5\Project7\GF\extended.h(425,21): warning C4101: 'e': unreferenced local variable
+D:\___CODING___\Projects\Project5\Project7\GF\actionSimple.h(271,22): warning C4101: 'ex': unreferenced local variable
+D:\___CODING___\Projects\Project5\Project7\GF\actionSimple.h(275,21): warning C4101: 'ex': unreferenced local variable
+D:\___CODING___\Projects\Project5\Project7\GF\actionSimple.h(279,21): warning C4101: 'e': unreferenced local variable
+D:\___CODING___\Projects\Project5\Project7\GF\actionExtended.h(439,21): warning C4101: 'e': unreferenced local variable
+  simple.cpp
+D:\___CODING___\Projects\Project5\Project7\GF\simple.h(349,22): warning C4101: 'ex': unreferenced local variable
+D:\___CODING___\Projects\Project5\Project7\GF\simple.h(353,21): warning C4101: 'e': unreferenced local variable
+  simpleBuilding.cpp
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  Generating Code...
+D:\___CODING___\Projects\Project5\Project7\GF\extendedBuilding.cpp(11): warning C4172: returning address of local variable or temporary: temp
+  actionExtended.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  GF.vcxproj -> D:\___CODING___\Projects\Project5\Project7\GF\x64\Debug\GoloisField.exe

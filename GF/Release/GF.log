@@ -1,0 +1,17 @@
+﻿  actionExtended.cpp
+c1xx : fatal error C1356: unable to find mspdbcore.dll
+  actionSimple.cpp
+c1xx : fatal error C1356: unable to find mspdbcore.dll
+  extended.cpp
+c1xx : fatal error C1356: unable to find mspdbcore.dll
+  extendedBuilding.cpp
+c1xx : fatal error C1356: unable to find mspdbcore.dll
+  MyForm.cpp
+c1xx : fatal error C1356: unable to find mspdbcore.dll
+  simple.cpp
+c1xx : fatal error C1356: unable to find mspdbcore.dll
+  simpleBuilding.cpp
+c1xx : fatal error C1356: unable to find mspdbcore.dll
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+c1xx : fatal error C1356: unable to find mspdbcore.dll
+  Generating Code...

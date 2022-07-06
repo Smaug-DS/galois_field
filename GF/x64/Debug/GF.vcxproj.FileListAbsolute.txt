@@ -1,0 +1,3 @@
+D:\___CODING___\Projects\Project5\Project7\GF\x64\Debug\GF.vcxproj.AssemblyReference.cache
+D:\___CODING___\Projects\Project5\Project7\GF\x64\Debug\GF.vcxproj.SuggestedBindingRedirects.cache
+D:\___CODING___\Projects\Project5\Project7\GF\x64\Debug\GoloisField.exe
