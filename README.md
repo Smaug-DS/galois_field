@@ -7,7 +7,7 @@ Microsoft .NET Framework 4.8 - https://go.microsoft.com/fwlink/?linkid=2088631
 # Galois_field
 Приложение для построения и выполнение простейших арифметических дейтвий Полей Галуа
 
-Файл .exe назодится D:\___CODING___\Projects\Project5\Project7\GF\x64\Release
+Файл .exe назодится Galois_field/GF/x64/Release/GF.exe
 
 Инструкция к использованию:
 1)	Выбрать режим одну из 4 функций (Построение простого/расширенного или Операции).
