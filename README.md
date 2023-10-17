@@ -29,7 +29,7 @@ The Galois Field Operations application is designed for building and executing f
 
 ## Performing Operations
 ### Operations in a Simple Field
-1. Enter the characteristic of the field in the "Characteristic" field.
+1. Enter the characteristic of the field in the "характеристика" field.
 2. Enter the operands.
 3. Select the desired operation (Addition, Subtraction, Multiplication, or Division).
 4. Click "Рассчитать"
