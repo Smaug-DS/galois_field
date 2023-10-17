@@ -63,7 +63,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Расчитать</string>
+    <string>рассчитать</string>
    </property>
   </widget>
   <widget class="QComboBox" name="comboBox">

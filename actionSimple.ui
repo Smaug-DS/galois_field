@@ -16,8 +16,8 @@
   <widget class="QTextEdit" name="textEdit_1">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>120</y>
+     <x>245</x>
+     <y>110</y>
      <width>150</width>
      <height>60</height>
     </rect>
@@ -46,14 +46,14 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>130</y>
+     <x>435</x>
+     <y>120</y>
      <width>122</width>
      <height>35</height>
     </rect>
    </property>
    <property name="text">
-    <string>расчитать</string>
+    <string>рассчитать</string>
    </property>
   </widget>
   <widget class="QTextEdit" name="textEdit_4">
@@ -102,8 +102,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>225</x>
-     <y>190</y>
+     <x>240</x>
+     <y>180</y>
      <width>160</width>
      <height>30</height>
     </rect>
