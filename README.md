@@ -1,4 +1,4 @@
-# Galois Field Operations
+# Galois Field Operations (Using QT5)
 An application for constructing and performing basic arithmetic operations on Galois Fields.
 
 ## Table of Contents
