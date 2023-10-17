@@ -20,6 +20,14 @@ void actionExtended::on_pushButton_clicked()
 {
     try
     {
+        if (ui->textEdit_1->toPlainText() == "" ||
+            ui->textEdit_2->toPlainText() == "" ||
+            ui->textEdit_3->toPlainText() == "" ||
+            ui->textEdit_4->toPlainText() == "")
+        {
+            throw "Отсутствуют значения на ввод или операнды";
+        }
+
         int num1, num2, result, p, n, y = 0, l = 0;
         int between1[50], between2[50], res[50];
 
@@ -45,6 +53,11 @@ void actionExtended::on_pushButton_clicked()
             throw 404;
         }
 
+        if (irred.irreducible(p, n) == QVector<int>())
+        {
+            throw "Для данного значения характеристики и значения не предусмотренного неприводимого многочлена";
+        }
+
         ui->tableWidget->setRowCount(1);
         ui->tableWidget->setColumnCount(n);
         for (int i = 0; i < n; i++)
@@ -52,23 +65,31 @@ void actionExtended::on_pushButton_clicked()
             ui->tableWidget->setItem(0, i, new QTableWidgetItem(""));
         }
 
-        extendedBuilding sizeL;
         int f = sizeL.sizeL(p, n);
 
-        if (ui->comboBox->currentText() == "умножение (степ.)")
+        if (ui->comboBox->currentText() == "умножение (степ.)" ||
+            ui->comboBox->currentText() == "деление (степ.)")
         {
-            result = (num1 + num2) % (f - 1);
-            ui->tableWidget->setItem(0, 0, new QTableWidgetItem(QString::number(result)));
-        }
-
-        if (ui->comboBox->currentText() == "деление (степ.)")
-        {
-            result = (num1 - num2);
-            if (result < 0)
+            if (num1 > f - 2 || num2 > f - 2)
             {
-                result += (f - 1);
+                throw "Значение превышает допустимую степень с текущей характеристикой и размерностью";
             }
-            ui->tableWidget->setItem(0, 0, new QTableWidgetItem(QString::number(result)));
+
+            if (ui->comboBox->currentText() == "умножение (степ.)")
+            {
+                result = (num1 + num2) % (f - 1);
+                ui->tableWidget->setItem(0, 0, new QTableWidgetItem(QString::number(result)));
+            }
+
+            if (ui->comboBox->currentText() == "деление (степ.)")
+            {
+                result = (num1 - num2);
+                if (result < 0)
+                {
+                    result += (f - 1);
+                }
+                ui->tableWidget->setItem(0, 0, new QTableWidgetItem(QString::number(result)));
+            }
         }
 
         if (ui->comboBox->currentText() == "сложение (полин.)")
@@ -168,13 +189,17 @@ void actionExtended::on_pushButton_clicked()
         }
         ui->tableWidget->resizeColumnsToContents();
     }
+    catch (const char* ex)
+    {
+        QMessageBox::warning(this, "Предупреждение", ex);
+    }
     catch (const int& ex)
     {
-        QMessageBox::warning(this, "Ошибка", "Недопустимые значения ввода");
+        QMessageBox::warning(this, "Предупреждение", "Недопустимые значения ввода");
     }
     catch (...)
     {
-        QMessageBox::critical(this, "Ошибка", "Введены неверные данные");
+        QMessageBox::critical(this, "Ошибка", "Не удалось обработать входные данные");
     }
 }
 

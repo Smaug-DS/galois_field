@@ -20,6 +20,12 @@ void simple::on_pushButton_clicked()
     try
     {
         int counterNoSimple = 0;
+
+        if (ui->textEdit->toPlainText()== "")
+        {
+            throw "Отсутствует введенное значение";
+        }
+
         int p = ui->textEdit->toPlainText().toInt();
 
         for (int i = 2; i * i <= p; i++)
@@ -96,7 +102,7 @@ void simple::on_pushButton_clicked()
     }
     catch (const char* ex)
     {
-        QMessageBox::critical(this, "Ошибка", "Число не является простым");
+        QMessageBox::warning(this, "Предупреждение", ex);
     }
     catch (...)
     {

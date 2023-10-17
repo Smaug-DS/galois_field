@@ -21,13 +21,12 @@ void extended::on_pushButton_clicked()
     {
         if (ui->textEdit_1->toPlainText() == "" || ui->textEdit_2->toPlainText() == "")
         {
-            return;
+            throw "Отсутствуют значения на ввод";
         }
 
         int p = ui->textEdit_1->toPlainText().toInt();
         int n = ui->textEdit_2->toPlainText().toInt();
 
-        extendedBuilding sizeL;
         int length = sizeL.sizeL(p, n);
 
         QVector<int> result(length + 1);
@@ -35,7 +34,6 @@ void extended::on_pushButton_clicked()
 
         int counterForLoop = 0, counterForIntegerForm = 0;
 
-        extendedBuilding irred;
         QVector<int> irreducible = irred.irreducible(p, n);
 
         if (irreducible == QVector<int>())
@@ -172,11 +170,11 @@ void extended::on_pushButton_clicked()
     }
     catch (const char* ex)
     {
-        QMessageBox::warning(this, "Ошибка", ex);
+        QMessageBox::warning(this, "Предупреждение", ex);
     }
     catch (...)
     {
-        QMessageBox::critical(this, "Ошибка", "Неверные данные");
+        QMessageBox::critical(this, "Ошибка", "Не удалось обработать входные данные");
     }
 }
 

@@ -23,6 +23,7 @@ private slots:
 private:
     Ui::actionExtended *ui;
     extendedBuilding sizeL;
+    extendedBuilding irred;
 };
 
 #endif // ACTIONEXTENDED_H

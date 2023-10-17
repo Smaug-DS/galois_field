@@ -22,9 +22,15 @@ void actionSimple::on_pushButton_clicked()
 {
     try
     {
+        if (ui->textEdit_1->toPlainText() == "" ||
+            ui->textEdit_2->toPlainText() == "" ||
+            ui->textEdit_3->toPlainText() == "")
+        {
+            throw "Отсутствуют значения на ввод или операнды";
+        }
+
         ui->textEdit_4->setText("");
         int num1, num2, result, p;
-        int counterNoSimple = 0;
 
         p = ui->textEdit_1->toPlainText().toInt();
         num1 = ui->textEdit_2->toPlainText().toInt();
@@ -45,9 +51,24 @@ void actionSimple::on_pushButton_clicked()
             throw 404;
         }
 
-        if (num1 > p || num2 > p)
+        int counterNoSimple = 0;
+
+        for (int i = 2; i * i <= p; i++)
         {
-            throw "Значение превышает модуль";
+            if (p % i == 0)
+            {
+                counterNoSimple++;
+            }
+        }
+
+        if (counterNoSimple)
+        {
+            throw "Число не является простым";
+        }
+
+        if (num1 >= p || num2 >= p)
+        {
+            throw "Значение равно или превышает модуль";
         }
 
         for (int i = 2; i < qSqrt(p); i++)
@@ -63,8 +84,8 @@ void actionSimple::on_pushButton_clicked()
             throw "Числа не являются взаимно простыми для данного модуля";
         }
 
-         QVector<QVector<int>> tempMulti = multi.multiplication(p);
-         QVector<QVector<int>> tempDiv = div.division(p);
+        QVector<QVector<int>> tempMulti = multi.multiplication(p);
+        QVector<QVector<int>> tempDiv = div.division(p);
 
         if (ui->comboBox->currentText() == "сложение")
         {
@@ -114,15 +135,15 @@ void actionSimple::on_pushButton_clicked()
     }
     catch (const char* ex)
     {
-        QMessageBox::warning(this, "Ошибка", ex);
+        QMessageBox::warning(this, "Предупреждение", ex);
     }
     catch (const int& ex)
     {
-        QMessageBox::warning(this, "Ошибка", "Недопустимые значения ввода");
+        QMessageBox::warning(this, "Предупреждение", "Недопустимые значения ввода");
     }
     catch (...)
     {
-        QMessageBox::warning(this, "Ошибка", "Введите допустимые числа");
+        QMessageBox::critical(this, "Ошибка", "Не удалось обработать входные данные");
     }
 
 }
