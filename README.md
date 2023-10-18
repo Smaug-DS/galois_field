@@ -39,7 +39,7 @@ The Galois Field Operations application is designed for building and executing f
 ### Operations in an Extended Field
 1. Enter the characteristic and dimension of the field in the respective fields.
 2. Enter the operands. For multiplication and division, specify the corresponding exponent. For addition and subtraction, provide the coefficients of the polynomials.
-3. Select the operation (Addition and Subtraction are performed in polynomial form, while Multiplication and Division are carried out in power form).
+3. Select the operation (Addition and Subtraction are performed in polynomial form, e.g. the polynomial 1 + x should be represented as 11, and the polynomial 1 + x^2 should be represented as 101, while Multiplication and Division are carried out in power form).
 4. Click "Рассчитать"
 5. **Note:** This application supports specific irreducible polynomials for extended fields: 2^2, 2^3, 2^4, 2^5, 2^6, 3^2, 3^3, 5^2, 5^5.
 
