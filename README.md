@@ -43,4 +43,12 @@ The Galois Field Operations application is designed for building and executing f
 4. Click "Рассчитать"
 5. **Note:** This application supports specific irreducible polynomials for extended fields: 2^2, 2^3, 2^4, 2^5, 2^6, 3^2, 3^3, 5^2, 5^5.
 
+### Technology Stack:
+
+I employed the following technologies for this project:
+
+![C++](https://img.shields.io/badge/-C++-090909?style=for-the-badge&logo=C%2b%2b&logoColor=6296CC)
+![QT](https://img.shields.io/badge/-QT-090909?style=for-the-badge&logo=QT&logoColor=0d544f)
+![STL\Boost](https://img.shields.io/badge/-STL\Boost-090909?style=for-the-badge&logo=Boost&logoColor=629665)
+
 Feel free to use this application for your Galois Field calculations!
