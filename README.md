@@ -1,6 +1,7 @@
 # Galois Field Operations (Using QT5)
 An application for constructing and performing basic arithmetic operations on Galois Fields.
 
+Please wait while the demonstration GIF loads on this page :)
 ![Header](https://github.com/Smaug-DS/Smaug-DS/blob/main/assets/gf.gif)
 
 ## Table of Contents
