@@ -1,8 +1,11 @@
+#include "simple.h"
 #include "actionSimple.h"
 #include "ui_actionSimple.h"
 
 #include <QMessageBox>
 #include <QtMath>
+#include <QDebug>
+#include <QElapsedTimer>
 #include <QIntValidator>
 
 actionSimple::actionSimple(QWidget *parent) :
@@ -51,19 +54,9 @@ void actionSimple::on_pushButton_clicked()
             throw 404;
         }
 
-        int counterNoSimple = 0;
-
-        for (int i = 2; i * i <= p; i++)
-        {
-            if (p % i == 0)
-            {
-                counterNoSimple++;
-            }
-        }
-
-        if (counterNoSimple)
-        {
-            throw "Число не является простым";
+        simple check_prime;
+        if (!check_prime.is_prime(p)) {
+            throw "Число p не является простым";
         }
 
         if (num1 >= p || num2 >= p)
@@ -71,21 +64,8 @@ void actionSimple::on_pushButton_clicked()
             throw "Значение равно или превышает модуль";
         }
 
-        for (int i = 2; i < qSqrt(p); i++)
-        {
-            if (p % i == 0)
-            {
-                counterNoSimple++;
-            }
-        }
-
-        if (counterNoSimple)
-        {
-            throw "Числа не являются взаимно простыми для данного модуля";
-        }
-
-        QVector<QVector<int>> tempMulti = multi.multiplication(p);
-        QVector<QVector<int>> tempDiv = div.division(p);
+        QElapsedTimer timer;
+        timer.start();
 
         if (ui->comboBox->currentText() == "сложение")
         {
@@ -113,25 +93,17 @@ void actionSimple::on_pushButton_clicked()
 
         if (ui->comboBox->currentText() == "деление")
         {
-            for (int i = 1; i < p; i++)
-            {
-                for (int j = 1; j < p; j++)
-                {
-                    for (int k = 1, g = 0; k < p; k++)
-                    {
-                        if (tempMulti[j][k] == i)
-                        {
-                            g = k;
-                        }
-                        tempDiv[i][j] = g;
-                    }
+            for (int i = 1; i < p; ++i) {
+                if ((num2 * i) % p == num1){
+                    result = i;
                 }
             }
 
-            result = tempDiv[num1][num2];
-
             ui->textEdit_4->setText(ui->textEdit_4->toPlainText() + QString::number(result));
         }
+
+        qDebug() << "Actions simple memory used:" << sizeof(result) << "bytes";
+        qDebug() << "Actions simple time used:" << timer.nsecsElapsed() / 1000.0 / 1000.0 << "milliseconds";
     }
     catch (const char* ex)
     {

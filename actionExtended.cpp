@@ -2,6 +2,8 @@
 #include "ui_actionExtended.h"
 
 #include <QMessageBox>
+#include <QElapsedTimer>
+#include <QDebug>
 
 actionExtended::actionExtended(QWidget *parent) :
     QDialog(parent),
@@ -29,7 +31,7 @@ void actionExtended::on_pushButton_clicked()
         }
 
         int num1, num2, result, p, n, y = 0, l = 0;
-        int between1[50], between2[50], res[50];
+        int between1[64], between2[64], res[64];
 
         p = ui->textEdit_1->toPlainText().toInt();
         n = ui->textEdit_2->toPlainText().toInt();
@@ -53,7 +55,7 @@ void actionExtended::on_pushButton_clicked()
             throw 404;
         }
 
-        if (irred.irreducible(p, n) == QVector<int>())
+        if (irred.irreducible(p, n) == std::vector<qint64>())
         {
             throw "Для данного значения характеристики и значения не предусмотренного неприводимого многочлена";
         }
@@ -65,32 +67,10 @@ void actionExtended::on_pushButton_clicked()
             ui->tableWidget->setItem(0, i, new QTableWidgetItem(""));
         }
 
-        int f = sizeL.sizeL(p, n);
+        QElapsedTimer timer;
+        timer.start();
 
-        if (ui->comboBox->currentText() == "умножение (степ.)" ||
-            ui->comboBox->currentText() == "деление (степ.)")
-        {
-            if (num1 > f - 2 || num2 > f - 2)
-            {
-                throw "Значение превышает допустимую степень с текущей характеристикой и размерностью";
-            }
-
-            if (ui->comboBox->currentText() == "умножение (степ.)")
-            {
-                result = (num1 + num2) % (f - 1);
-                ui->tableWidget->setItem(0, 0, new QTableWidgetItem(QString::number(result)));
-            }
-
-            if (ui->comboBox->currentText() == "деление (степ.)")
-            {
-                result = (num1 - num2);
-                if (result < 0)
-                {
-                    result += (f - 1);
-                }
-                ui->tableWidget->setItem(0, 0, new QTableWidgetItem(QString::number(result)));
-            }
-        }
+        int f = len.pow(p, n);
 
         if (ui->comboBox->currentText() == "сложение (полин.)")
         {
@@ -187,6 +167,38 @@ void actionExtended::on_pushButton_clicked()
                 }
             }
         }
+
+
+        if (ui->comboBox->currentText() == "умножение (степ.)" ||
+            ui->comboBox->currentText() == "деление (степ.)")
+        {
+            if (num1 > f - 2 || num2 > f - 2)
+            {
+                throw "Значение превышает допустимую степень с текущей характеристикой и размерностью";
+            }
+
+            if (ui->comboBox->currentText() == "умножение (степ.)")
+            {
+                result = (num1 + num2) % (f - 1);
+                ui->tableWidget->setItem(0, 0, new QTableWidgetItem(QString::number(result)));
+            }
+
+            if (ui->comboBox->currentText() == "деление (степ.)")
+            {
+                result = (num1 - num2);
+                if (result < 0)
+                {
+                    result += (f - 1);
+                }
+                ui->tableWidget->setItem(0, 0, new QTableWidgetItem(QString::number(result)));
+            }
+        }
+
+        qDebug() << "p:" << p;
+        qDebug() << "n:" << n;
+        qDebug() << "Actions extended memory used:" << (sizeof(num1) * 4) + (sizeof(f)) << "bytes";
+        qDebug() << "Actions extended time used:" << timer.nsecsElapsed() / 1000.0 / 1000.0 << "milliseconds";
+
         ui->tableWidget->resizeColumnsToContents();
     }
     catch (const char* ex)

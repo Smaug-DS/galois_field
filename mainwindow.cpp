@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QMessageBox>
+#include <QThread>
 #include <QDebug>
 
 #include "simple.h"
@@ -23,6 +24,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_simple_clicked()
 {
     simple* ad = new simple();
+//    ad->write_profile_in_file();
     ad->show();
 }
 
@@ -30,6 +32,7 @@ void MainWindow::on_simple_clicked()
 void MainWindow::on_extended_clicked()
 {
     extended* ad = new extended();
+//    ad->write_profile_in_file();
     ad->show();
 }
 
