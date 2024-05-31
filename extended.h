@@ -17,8 +17,9 @@ public:
     explicit extended(QWidget *parent = nullptr);
     ~extended();
     void init_table(qint64 length, qint64 n);
-    void fill_real_exp(qint64 length);
-    void fill_poly_vector(qint64 n, std::vector<qint64>& result, qint64 counterForLoop);
+    void fill_exp(qint64 length);
+    void fill_real(qint64 n, std::vector<qint64>& result, qint64 iterator);
+    void fill_poly_vector(qint64 n, std::vector<qint64>& result, qint64 iterator);
     qint64 compute(bool with_gui = false, qint64 p = 0, qint64 n = 0);
 
     struct profile_result {

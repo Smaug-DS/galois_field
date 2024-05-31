@@ -70,13 +70,13 @@ void actionSimple::on_pushButton_clicked()
         if (ui->comboBox->currentText() == "сложение")
         {
             result = (num1 + num2) % p;
-            ui->textEdit_4->setText(ui->textEdit_4->toPlainText() + QString::number(result));
+            qDebug() << "Addition " << num1 << "+" << num2 << "in GF(" << p << "): " << result;
         }
 
         if (ui->comboBox->currentText() == "умножение")
         {
             result = (num1 * num2) % p;
-            ui->textEdit_4->setText(ui->textEdit_4->toPlainText() + QString::number(result));
+            qDebug() << "Multiplication " << num1 << "*" << num2 << "in GF(" << p << "): " << result;
         }
 
         if (ui->comboBox->currentText() == "вычитание")
@@ -87,8 +87,7 @@ void actionSimple::on_pushButton_clicked()
             {
                 result += p;
             }
-
-            ui->textEdit_4->setText(ui->textEdit_4->toPlainText() + QString::number(result));
+            qDebug() << "Subtraction " << num1 << "-" << num2 << "in GF(" << p << "): " << result;
         }
 
         if (ui->comboBox->currentText() == "деление")
@@ -98,12 +97,13 @@ void actionSimple::on_pushButton_clicked()
                     result = i;
                 }
             }
-
-            ui->textEdit_4->setText(ui->textEdit_4->toPlainText() + QString::number(result));
+            qDebug() << "Division " << num1 << "/" << num2 << "in GF(" << p << "): " << result;
         }
 
-        qDebug() << "Actions simple memory used:" << sizeof(result) << "bytes";
         qDebug() << "Actions simple time used:" << timer.nsecsElapsed() / 1000.0 / 1000.0 << "milliseconds";
+        qDebug() << "Actions simple memory used:" << sizeof(num1) + sizeof(num2) + sizeof(p) << "bytes";
+
+        ui->textEdit_4->setText(ui->textEdit_4->toPlainText() + QString::number(result));
     }
     catch (const char* ex)
     {

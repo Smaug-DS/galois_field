@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <QDebug>
 #include <QFile>
+#include <QtMath>
 
 extended::extended(QWidget *parent) :
     QDialog(parent),
@@ -41,13 +42,20 @@ void extended::init_table(qint64 length, qint64 n) {
     }
 }
 
-void extended::fill_real_exp(qint64 length) {
+void extended::fill_exp(qint64 length) {
     for (qint64 i = 1; i < length; ++i) {
-        // real
-         ui->tableWidget_1->setItem(i, 0, new QTableWidgetItem(QString::number(i)));
-         // exponent
-         ui->tableWidget_2->setItem(i, 0, new QTableWidgetItem("a^" + QString::number(i - 1)));
+        // exponent
+        ui->tableWidget_2->setItem(i, 0, new QTableWidgetItem("a^" + QString::number(i - 1)));
     }
+}
+
+void extended::fill_real(qint64 n, std::vector<qint64>& result, qint64 iterator) {
+    qint64 res = 0;
+    for (qint64 i = 0; i < n; ++i) {
+        res += result[i] * qPow(2, i);
+    }
+    // real
+    ui->tableWidget_1->setItem(iterator + 1, 0, new QTableWidgetItem(QString::number(res)));
 }
 
 void extended::fill_poly_vector(qint64 n, std::vector<qint64>& result, qint64 iterator)
@@ -113,7 +121,7 @@ qint64 extended::compute(bool with_gui, qint64 p, qint64 n)
     if (with_gui)
     {
         // start with 1, cuz call init_table
-        fill_real_exp(length);
+        fill_exp(length);
     }
 
     std::vector<qint64> result(length + 1, 0);
@@ -127,6 +135,7 @@ qint64 extended::compute(bool with_gui, qint64 p, qint64 n)
     {
         if (with_gui)
         {
+            fill_real(n, result, iterator);
             fill_poly_vector(n, result, iterator);
         }
 
