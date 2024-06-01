@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = pd.read_csv('profile_extended.csv')
+data = pd.read_csv('profile_extended_3.csv')
 plt.figure(figsize=(10, 5))
 
 # Создание нового столбца, который объединяет 'prime' и 'exp' как одно целое
